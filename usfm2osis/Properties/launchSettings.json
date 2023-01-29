@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "usfm2osis": {
+      "commandName": "Project",
+      "commandLineArgs": "osisword \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\usfm2osis-master\\usfm2osis-master\\tests\\usfmSamples\\000000_id.usfm\""
+    }
+  }
+}

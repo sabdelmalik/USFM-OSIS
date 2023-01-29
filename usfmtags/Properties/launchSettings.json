@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "usfmtags": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arb-vd_usfm\\*arb-vd.usfm\""
+    }
+  }
+}
