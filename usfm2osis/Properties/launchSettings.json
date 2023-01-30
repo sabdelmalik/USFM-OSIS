@@ -2,7 +2,7 @@
   "profiles": {
     "usfm2osis": {
       "commandName": "Project",
-      "commandLineArgs": "osisword \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\usfm2osis-master\\usfm2osis-master\\tests\\usfmSamples\\000000_id.usfm\""
+      "commandLineArgs": "arasvdn -r -l ar -o \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arasvdn.xml\" \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arb-vd_usfm\\*.usfm\""
     }
   }
 }

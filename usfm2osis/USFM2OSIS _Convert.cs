@@ -1740,7 +1740,7 @@ namespace SM.Bible.Formats
             "item",
             "list" })
             {
-                osis = Regex.Replace(osis, @"\s+</" + end_block + ">", "</" + end_block + @">\n");
+                osis = Regex.Replace(osis, @"\s+</" + end_block + ">", "</" + end_block + ">\n");
                 osis = Regex.Replace(osis,
                     @"\s+<" + end_block + "( eID=[^/>]+/>)",
                     "<" + end_block + "$1" + "\n");

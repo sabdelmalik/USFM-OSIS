@@ -32,7 +32,10 @@ namespace SM.Bible.Formats
         string osisWork = string.Empty;
         string osis_filename = string.Empty;
         int input_files_index = 1;  // This marks the point in the sys.argv array, after which all values represent USFM files to be converted.
+        List<string> work_usfm_doc_list = new List<string>();
         List<string> usfm_doc_list = new List<string>();
+
+        Dictionary<string, string> osisSegment;
 
         List<string> aliases = new List<string>();
         public USFM2OSIS(string[] args)
@@ -140,16 +143,37 @@ namespace SM.Bible.Formats
                     // sortKey = key_natural;
                 }
 
-                usfm_doc_list = args.Skip(input_files_index).ToList();
-                usfm_doc_list.Sort();
+                work_usfm_doc_list = args.Skip(input_files_index).ToList();
+                work_usfm_doc_list.Sort();
 
                 Console.WriteLine("Converting USFM documents to OSIS...");
-                Dictionary<string, string> osisSegment = new Dictionary<string, string>();
-                foreach (string file in usfm_doc_list)
+                osisSegment = new Dictionary<string, string>();
+                foreach (string file in work_usfm_doc_list)
                 {
-                    read_identifiers_from_osis(file);
-                    string osis = ConvertToOSIS(file);
-                    osisSegment[file] = osis;
+                    string fileName = Path.GetFileName(file);
+                    if (fileName.Contains('*'))
+                    {
+                        var folder = Path.GetDirectoryName(file);
+                        if (folder != null)
+                        {
+                            string[] docs = Directory.GetFiles(folder, fileName);
+                            foreach (string doc in docs)
+                            {
+                                usfm_doc_list.Add(doc);
+                                read_identifiers_from_osis(doc);
+                                string osis = ConvertToOSIS(doc);
+                                osisSegment[doc] = osis;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        read_identifiers_from_osis(file);
+                        string osis = ConvertToOSIS(file);
+                        osisSegment[file] = osis;
+                        usfm_doc_list.Add(file);
+                    }
                 }
 
                 Console.WriteLine("Assembling OSIS document");
