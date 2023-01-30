@@ -1381,9 +1381,13 @@ namespace SM.Bible.Formats
 
             // \w_...\w*
             osis = Regex.Replace(osis,
-                @"\\w\s+(.+?)(\s*)\\w\*",
-                "$1<index index=\"Glossary\" level1=\"$1\"/>$2",
+                @"\\w\s+(.+?)\|(.+?)\=""(.+?)""(\s*)\\w\*",
+                "<w lemma=\"$2:$3\">$1</w>",
                 RegexOptions.Singleline);
+            /*            osis = Regex.Replace(osis,
+                            @"\\w\s+(.+?)(\s*)\\w\*",
+                            "$1<index index=\"Glossary\" level1=\"$1\"/>$2",
+                            RegexOptions.Singleline);*/
 
             // \wg_...\wg*
             osis = Regex.Replace(osis,
