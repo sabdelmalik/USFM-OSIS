@@ -2,7 +2,7 @@
   "profiles": {
     "usfm2osis": {
       "commandName": "Project",
-      "commandLineArgs": "arasvdn -r -l ar -o \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arasvdn.xml\" \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arb-vd_usfm\\*.usfm\""
+      "commandLineArgs": "arasvdn -r -l ar -o \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arasvdn.xml\" \"C:\\Users\\samim\\Documents\\MyProjects\\STEP\\Bible Formats\\Bibles\\arb1-vd_usfm\\*.usfm\""
     }
   }
 }

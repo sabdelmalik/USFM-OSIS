@@ -1381,8 +1381,8 @@ namespace SM.Bible.Formats
 
             // \w_...\w*
             osis = Regex.Replace(osis,
-                @"\\w\s+(.+?)\|(.+?)\=""(.+?)""(\s*)\\w\*",
-                "<w lemma=\"$2:$3\">$1</w>",
+                @"\\w\s+(.+?)(?!\|)\\w\*",
+                m => process_w(m),
                 RegexOptions.Singleline);
             /*            osis = Regex.Replace(osis,
                             @"\\w\s+(.+?)(\s*)\\w\*",
@@ -1411,6 +1411,21 @@ namespace SM.Bible.Formats
             }
 
             return osis;
+        }
+
+        /// <summary>
+        /// Handel \w \w* 
+        /// </summary>
+        /// <param name="m2"></param>
+        /// <returns></returns>
+        private string process_w(Match m2)
+        {
+            return m2.Groups[0].Value.Contains("|") ?
+                "<w lemma=\"" +
+                Regex.Match(m2.Groups[0].Value, @"\\w\s+(.+?)\|(.+?)\=""(.+?)""(\s*)\\w\*").Groups[2] + ":" +
+                Regex.Match(m2.Groups[0].Value, @"\\w\s+(.+?)\|(.+?)\=""(.+?)""(\s*)\\w\*").Groups[3] + "\">" +
+                Regex.Match(m2.Groups[0].Value, @"\\w\s+(.+?)\|(.+?)\=""(.+?)""(\s*)\\w\*").Groups[1] + "</w>" :
+                "<w>" + m2.Groups[1].Value + "</w>";
         }
 
         /// <summary>
